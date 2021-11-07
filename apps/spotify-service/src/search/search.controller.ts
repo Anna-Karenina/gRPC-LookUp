@@ -6,10 +6,9 @@ import { SearchService } from './search.service';
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
-  @GrpcMethod('SpotifyService_Search', 'Search')
-  Search(a: any, metadata: any): any {
-    console.log(a);
-
-    // return { sum: this.service1Service.accumulate(numberArray.data) };
+  @GrpcMethod('SpotifyService_Search', 'search')
+  search({ query }: any, metadata: any): any {
+    const list = this.searchService.searchByQuery(query);
+    return { aut: [false, true] };
   }
 }

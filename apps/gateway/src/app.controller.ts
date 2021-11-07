@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  OnModuleInit,
-  Post,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, OnModuleInit, Query } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { IGrpcService } from './grpc.interface';
 import { microserviceOptions } from './grpc.options';
@@ -23,15 +16,8 @@ export class AppController implements OnModuleInit {
     );
   }
 
-  @Post('add')
-  async accumulate(@Body('data') data: number[]) {
-    return this.grpcService.accumulate({ data });
-  }
-
   @Get()
   async searchTracks(@Query('q') q: string) {
-    console.log(q);
-
-    return this.grpcService.Search({ query: q });
+    return this.grpcService.search({ query: q });
   }
 }

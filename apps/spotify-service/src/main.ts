@@ -5,6 +5,7 @@ import { SpotifyServiceModule } from './spotify-service.module';
 
 async function bootstrap() {
   const protoPath = resolve('./spotify.proto');
+  console.log(protoPath);
 
   process.on('unhandledRejection', (reason, promise) => {
     console.error('=== UNHANDLED REJECTION ===');
@@ -23,7 +24,7 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
-        url: 'localhost:5500',
+        // url: 'localhost:5500',
         package: 'spotify',
         protoPath,
       },
