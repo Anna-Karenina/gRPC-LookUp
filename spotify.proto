@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package spotify;
+
+service SpotifyService_Auth{
+  rpc SignIn (SignInData) returns (SignInRes);
+}
+
+service SpotifyService_Search{
+  rpc Search (SearchReq) returns (SearchRes);
+}
+
+
+message SignInData {
+  repeated string email = 1;
+  repeated string password = 2;
+}
+
+message SignInRes {
+ bool login = 1;
+}
+
+message SearchReq {
+  repeated string query = 1;
+}
+
+message SearchRes {
+  bool aut = 1;
+}

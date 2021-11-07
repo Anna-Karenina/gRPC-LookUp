@@ -1,29 +1,40 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/server/src",
+  "sourceRoot": "apps/gateway/src",
   "monorepo": true,
-  "root": "apps/server",
+  "root": "apps/gateway",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "apps/server/tsconfig.app.json"
+    "tsConfigPath": "apps/gateway/tsconfig.app.json",
+    "assets": ["**/*.proto"],
+    "watchAssets": true
   },
   "projects": {
-    "server": {
+    "gateway": {
       "type": "application",
-      "root": "apps/server",
+      "root": "apps/gateway",
       "entryFile": "main",
-      "sourceRoot": "apps/server/src",
+      "sourceRoot": "apps/gateway/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/server/tsconfig.app.json"
+        "tsConfigPath": "apps/gateway/tsconfig.app.json"
       }
     },
-    "client1": {
+    "service1": {
       "type": "application",
-      "root": "apps/client1",
+      "root": "apps/service1",
       "entryFile": "main",
-      "sourceRoot": "apps/client1/src",
+      "sourceRoot": "apps/service1/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/client1/tsconfig.app.json"
+        "tsConfigPath": "apps/service1/tsconfig.app.json"
+      }
+    },
+    "spotify-service": {
+      "type": "application",
+      "root": "apps/spotify-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/spotify-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/spotify-service/tsconfig.app.json"
       }
     }
   }
